@@ -1,16 +1,26 @@
 <?xml version="1.0" ?>
 
-<robot name="moveo_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="dossarm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
     
-     <xacro:include filename="$(find dossarm_description)/urdf/links_joints.xacro" />
+    <xacro:include filename="$(find dossarm_description)/urdf/links_joints.xacro" />
     <xacro:property name="path_to_meshes" value="package://dossarm_description/meshes" />
+     
+     <link name="world">
+    </link>
     
-    <xacro:m_link_mesh name="base"
+      <joint name="odom_joint" type="fixed">
+        <origin xyz="0 0 -1" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="base_link" />
+    </joint>
+  
+    
+    <xacro:m_link_mesh name="base_link"
         origin_xyz="0 0 0"
         origin_rpy="1.5707 0 0"
-        meshfile_visual= "package://dossarm_description/meshes/Motor_1_Case.stl"
-        meshfile_collision= "package://dossarm_description/meshes/Motor_1_Case.stl"
+        meshfile_visual= "${path_to_meshes}/Motor_1_Case.stl"
+        meshfile_collision= "${path_to_meshes}/Motor_1_Case.stl"
         mass="0.1"
         ixx="0.03"
         ixy="0.0"
@@ -21,18 +31,6 @@
     />
 
 
-
-    <!-- dummy link -->
-    <link name="world">
-    </link>
-    
-    
-    <joint name="odom_joint" type="fixed">
-        <origin xyz="0 0 -1" rpy="0 0 0" />
-        <parent link="world" />
-        <child link="base" />
-    </joint>
-    
      <xacro:m_link_mesh name="Motor_1"
     origin_xyz="0 0 0"
     origin_rpy="1.5708 0 0"
@@ -48,17 +46,14 @@
     />
     
    
-     <xacro:m_joint name= "dummyjoint_base_to_motor_1"
-        type="fixed"
+     <xacro:m_joint_fixed name= "dummyjoint_base_to_motor_1"
+       
         origin_xyz= "0 0 0.064"
         origin_rpy="0 0 0"
-        axis_xyz="0 0 0"
-        parent="base"
+        
+        parent="base_link"
         child="Motor_1"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
+       
     />
     
     <xacro:m_link_mesh name="Link_1"
@@ -103,17 +98,13 @@
     izz="0.03"
     />
    
-          <xacro:m_joint name= "dummyjoint_Link_1_to_Motor_1"
-        type="fixed"
+          <xacro:m_joint_fixed name= "dummyjoint_Link_1_to_Motor_1"
+        
         origin_xyz= "-0.00575 0 0"
         origin_rpy="0 0 1.5708"
-        axis_xyz="0 0 0"
+        
         parent="Link_1"
         child="Motor_2"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
     />
    
    <xacro:m_link_mesh name="shoulder"
@@ -131,11 +122,11 @@
     /> 
    
 
-       <xacro:m_joint name= "Joint_2"
+    <xacro:m_joint name= "Joint_2"
         type="revolute"
         origin_xyz= "0 -0.00575 0"
         origin_rpy="0 0 1.5708"
-        axis_xyz="0 0 0"
+        axis_xyz="1 0 0"
         parent="Motor_2"
         child="shoulder"
         limit_l="-1.5707"
@@ -159,17 +150,13 @@
     /> 
     
 
-       <xacro:m_joint name= "dummyJoint_Motor_3_to_UpperArm"
-        type="fixed"
+       <xacro:m_joint_fixed name= "dummyJoint_Motor_3_to_UpperArm"
+        
         origin_xyz= "0 0.00575 0.1"
         origin_rpy="0 0 0"
-        axis_xyz="0 0 0"
+       
         parent="shoulder"
         child="Motor_3"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
     />
     
    
@@ -215,17 +202,14 @@
     izz="0.03"
     /> 
     
-        <xacro:m_joint name= "dummyJoint_Motor_4_to_forearm"
-        type="fixed"
+        <xacro:m_joint_fixed name= "dummyJoint_Motor_4_to_forearm"
+        
         origin_xyz= "-0.00575 0 0.343041 "
         origin_rpy="0 0 1.5708"
-        axis_xyz="0 0 0"
+        
         parent="upperarm"
         child="Motor_4"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
+        
     />
    
     <xacro:m_link_mesh name="forearm_upper"
@@ -271,17 +255,14 @@
     /> 
     
 
-     <xacro:m_joint name= "dummyJoint_forearm_upper_to_Motor_5"
-        type="fixed"
+     <xacro:m_joint_fixed name= "dummyJoint_forearm_upper_to_Motor_5"
+        
         origin_xyz= "0  0  0.1775"
         origin_rpy="1.5708 0 0 "
-        axis_xyz="0 0 0"
+       
         parent="forearm_upper"
         child="Motor_5"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
+       
     />
   
 
@@ -328,17 +309,14 @@
     />    
 
 
- <xacro:m_joint name= "dummyJoint_Motor_6_Wrist_Connection"
-        type="fixed"
+ <xacro:m_joint_fixed name= "dummyJoint_Motor_6_Wrist_Connection"
+        
         origin_xyz= "0.039 0 0.124233"
         origin_rpy="0 1.5708  0 "
-        axis_xyz="0 0 0" 
+       
         parent="forearm_lower"
         child="Motor_6"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
+       
     />
     
 
@@ -388,17 +366,14 @@
         iyz= "0.0"
         izz="0.03"
     />      
- <xacro:m_joint name= "dummyJoint_Wrist_to_Motor_7"
-        type="fixed"
+ <xacro:m_joint_fixed name= "dummyJoint_Wrist_to_Motor_7"
+        
         origin_xyz= "0.039 0 0.082"
         origin_rpy= "1.5708 0 1.5708"
-        axis_xyz="0 1 0" 
+       
         parent="wrist"
         child="Motor_7"
-        limit_l="-1.5707"
-        limit_u="1.5707"
-        limit_v="1"
-        limit_e="5"
+       
     />
 
    <xacro:m_link_mesh name="arm_ph42"
@@ -427,5 +402,8 @@
         limit_e="5"
     />
   
+     <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+    </gazebo>
 </robot>
 
