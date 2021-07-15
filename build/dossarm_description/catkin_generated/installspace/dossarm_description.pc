@@ -1,0 +1,8 @@
+prefix=/home/nils/Documents/Studium/Studienarbeit/DossArm/install
+
+Name: dossarm_description
+Description: Description of dossarm_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
