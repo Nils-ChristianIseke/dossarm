@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dossarm_description
+    relative_path: urdf/dossarm.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/dossarm_description.srdf
+  CONFIG:
+    author_name: Nils-Christian Iseke
+    author_email: nilsmailiseke@gmail.com
+    generated_timestamp: 1626428960
