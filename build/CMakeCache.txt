@@ -389,6 +389,12 @@ dossarm_description_BINARY_DIR:STATIC=/home/nils/Documents/Studium/Studienarbeit
 dossarm_description_SOURCE_DIR:STATIC=/home/nils/Documents/Studium/Studienarbeit/DossArm/src/dossarm_description
 
 //Value Computed by CMake
+dossarm_moveit_config_BINARY_DIR:STATIC=/home/nils/Documents/Studium/Studienarbeit/DossArm/build/dossarm_moveit_config
+
+//Value Computed by CMake
+dossarm_moveit_config_SOURCE_DIR:STATIC=/home/nils/Documents/Studium/Studienarbeit/DossArm/src/dossarm_moveit_config
+
+//Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/nils/Documents/Studium/Studienarbeit/DossArm/build/gtest/googlemock
 
 //Dependencies for the target
@@ -582,7 +588,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

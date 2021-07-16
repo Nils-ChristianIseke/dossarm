@@ -1,2 +1,2 @@
-dossarm_description
+dossarm_description:dossarm_moveit_config
 -DCATKIN_DEVEL_PREFIX=/home/nils/Documents/Studium/Studienarbeit/DossArm/devel -DCMAKE_INSTALL_PREFIX=/home/nils/Documents/Studium/Studienarbeit/DossArm/install -G Unix Makefiles

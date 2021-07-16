@@ -9,13 +9,12 @@
      <link name="world">
     </link>
     
-      <joint name="odom_joint" type="fixed">
-        <origin xyz="0 0 -1" rpy="0 0 0" />
+    
+     <joint name="odom_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <parent link="world" />
         <child link="base_link" />
     </joint>
-  
-    
     <xacro:m_link_mesh name="base_link"
         origin_xyz="0 0 0"
         origin_rpy="1.5707 0 0"
@@ -29,7 +28,8 @@
         iyz= "0.0"
         izz="0.03"
     />
-
+ 
+  
 
      <xacro:m_link_mesh name="Motor_1"
     origin_xyz="0 0 0"
